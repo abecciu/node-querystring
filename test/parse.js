@@ -158,6 +158,11 @@ describe('qs.parse()', function(){
     expect(q).to.eql({ a: ['2', '1'] });
   })
 
+  it('should support objects with numbers as keys', function(){
+    expect(qs.parse("a['111']=1")).to.eql({ a: { '111': '1' }});
+    expect(qs.parse("'123'=hello")).to.eql({ '123': 'hello' });
+  })
+
   if ('undefined' == typeof window) {
     it('should not be possible to access Object prototype', function() {
       qs.parse('constructor[prototype][bad]=bad');
