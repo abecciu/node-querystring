@@ -89,6 +89,11 @@ function promote(parent, key) {
 
 function parse(parts, parent, key, val) {
   var part = parts.shift();
+
+  if (isnumstr.test(key)) {
+    key = key.replace(/'/g, '');
+  }
+
   // end
   if (!part) {
     if (isArray(parent[key])) {

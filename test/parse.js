@@ -161,6 +161,7 @@ describe('qs.parse()', function(){
   it('should support objects with numbers as keys', function(){
     expect(qs.parse("a['111']=1")).to.eql({ a: { '111': '1' }});
     expect(qs.parse("'123'=hello")).to.eql({ '123': 'hello' });
+    expect(qs.parse("a['111'][b]=222")).to.eql({ a: { '111': { b: '222' }}});
   })
 
   if ('undefined' == typeof window) {
